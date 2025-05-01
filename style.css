@@ -1,0 +1,217 @@
+
+:root {
+    --bg-color: #f5f7fa;
+    --card-bg: white;
+    --text-color: #333;
+    --border-color: #3498db;
+    --add-btn-bg: #2ecc71;
+    --delete-btn-bg: #e74c3c;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --placeholder-color: #7f8c8d;
+    --title-color: #2c3e50;
+}
+
+.dark-mode {
+    --bg-color: #1a1a2e;
+    --card-bg: #22223b;
+    --text-color: #e6e6e6;
+    --border-color: #4cc9f0;
+    --add-btn-bg: #4ade80;
+    --delete-btn-bg: #ef4444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --placeholder-color: #9ca3af;
+    --title-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.moon-icon, .sun-icon {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+body:not(.dark-mode) .sun-icon {
+    display: none;
+}
+
+body.dark-mode .moon-icon {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .theme-toggle {
+        position: static;
+        margin-bottom: 15px;
+        margin-top: -45px;
+        align-self: flex-end;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.theme-toggle:hover {
+    opacity: 0.9;
+}
+
+.app-container {
+    padding-top: 20px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--title-color);
+    font-size: 28px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.input-container {
+    display: flex;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .input-container {
+        flex-direction: column;
+        box-shadow: none;
+    }
+    
+    #task {
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 2px 10px var(--shadow-color);
+    }
+    
+    .add-btn {
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+}
+
+#task {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+#task::placeholder {
+    color: var(--placeholder-color);
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.add-btn {
+    background-color: var(--add-btn-bg);
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+li span {
+    font-size: 16px;
+    word-break: break-word;
+    padding-right: 10px;
+    flex: 1;
+}
+
+button.delete {
+    background-color: var(--delete-btn-bg);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 70px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--placeholder-color);
+    padding: 20px;
+    font-style: italic;
+}
